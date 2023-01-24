@@ -11,6 +11,8 @@
   --background-color-even: #188ce8;
   --color-border-one: #eeeeee;
   --color-fill-svg: #afb1b8;
+  --color-background-animation: rgba(33, 150, 243, 0.9);
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 html {
   box-sizing: border-box;
@@ -104,6 +106,7 @@ img {
   letter-spacing: 0.03em;
 
   color: var(--color-primary);
+  transition: color 250ms var(--timing-function);
 }
 .nav_link_logo .current:hover,
 .nav_link_logo .current:focus {
@@ -114,6 +117,7 @@ img {
 }
 
 .nav_link_menu {
+  position: relative;
   padding-top: 32px;
   padding-bottom: 32px;
 
@@ -123,6 +127,24 @@ img {
   font-size: 14px;
   line-height: 16px;
   letter-spacing: 0.02em;
+
+  transition: color 250ms var(--timing-function);
+}
+
+.nav_link_menu.current {
+  color: var(--color-action);
+}
+.nav_link_menu.current.lineal::after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: var(--color-background-action);
+
+  /* transition: opacity 250ms var(--timing-function); */
 }
 
 .nav_list:not(:last-of-type) {
@@ -132,9 +154,7 @@ img {
 .nav_list .nav_link_menu:focus {
   color: var(--background-color-even);
 }
-.nav_link_menu.current {
-  color: var(--color-action);
-}
+
 .header-contact {
   display: flex;
   padding-left: 0;
@@ -172,6 +192,9 @@ img {
   letter-spacing: 0.02em;
 
   color: var(--color-text-deck);
+
+  transition: color 250ms var(--timing-function),
+    fill 250ms var(--timing-function);
 }
 .header_link_email:hover .email-img,
 .header_link_email:focus .email-img,
@@ -233,6 +256,8 @@ img {
   font-weight: 700;
   font-size: 16px;
   line-height: 1.87;
+
+  transition: background-color 250ms var(--timing-function);
 }
 .contact_btn:hover,
 .contact_btn:focus {
@@ -281,16 +306,38 @@ img {
   padding-bottom: 94px;
 }
 
+.work_relative_img {
+  position: relative;
+}
+
+.work_list_img {
+  margin-left: 30px;
+  margin-top: 30px;
+  flex-basis: calc((100% - 90px) / 3);
+}
 .work-item {
   display: flex;
   flex-wrap: wrap;
   margin-left: -30px;
   margin-top: -30px;
 }
-.work_list_img {
-  margin-left: 30px;
-  margin-top: 30px;
-  flex-basis: calc((100% - 90px) / 3);
+.work_absolute_title {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+
+  width: 370px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(47, 48, 58, 0.8);
+}
+
+.work_feature_title {
+  margin-bottom: unset;
+  font-size: 16px;
+  color: var(--color-background-primary);
 }
 
 .teams {
@@ -319,7 +366,7 @@ img {
 .team_member_card {
   padding-top: 30px;
   padding-bottom: 30px;
-  background: #ffffff;
+  background: var(--color-background-primary);
 
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -361,20 +408,24 @@ img {
   justify-content: center;
   align-items: center;
   background-color: var(--color-background-primary);
-}
-.team_item_icon:not(:last-of-type) {
-  margin-right: 10px;
-}
-.teams_icon {
-  fill: var(--color-fill-svg);
+
+  transition: background-color 250ms var(--timing-function);
 }
 .teams_link_icon:hover,
 .teams_link_icon:focus {
   background-color: var(--color-action);
 }
+.teams_icon {
+  fill: var(--color-fill-svg);
+  transition: fill 250ms var(--timing-function);
+}
 .teams_link_icon:hover .teams_icon,
 .teams_link_icon:focus .teams_icon {
   fill: var(--color-background-primary);
+}
+
+.team_item_icon:not(:last-of-type) {
+  margin-right: 10px;
 }
 
 .partner_list {
@@ -386,6 +437,11 @@ img {
   height: 92px;
   border: 1px solid var(--color-fill-svg);
   border-radius: 4px;
+  transition: color 250ms var(--timing-function);
+}
+.partner_item:hover,
+.partner_item:focus {
+  border: 1px solid var(--color-action);
 }
 .partner_link {
   width: 100%;
@@ -393,21 +449,18 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  transition: fill 250ms var(--timing-function);
+}
+.partner_link:hover .partner_icon,
+.partner_link:focus .partner_icon {
+  fill: var(--color-action);
 }
 
 .partner_item:not(:last-of-type) {
   margin-right: 30px;
 }
 
-.partner_item:hover,
-.partner_item:focus {
-  border: 1px solid var(--color-action);
-}
-
-.partner_link:hover .partner_icon,
-.partner_link:focus .partner_icon {
-  fill: var(--color-action);
-}
 .partner_icon {
   width: 106px;
   height: 60px;
@@ -489,14 +542,16 @@ address {
   letter-spacing: 0.03em;
   text-transform: uppercase;
 
-  color: #ffffff;
+  color: var(--color-background-primary);
 }
 .social_item:not(:last-of-type) {
   margin-right: 10px;
 }
 .social_link {
-  background: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
   fill: var(--color-invert);
+  transition: background-color 250ms var(--timing-function),
+    fill 250ms var(--timing-function);
 }
 .social_link:hover,
 .social_link:focus {
@@ -523,6 +578,8 @@ address {
   line-height: 1.6;
   text-align: center;
   color: var(--color-primary);
+  transition: background-color 250ms var(--timing-function),
+    color 250ms var(--timing-function), box-shadow 250ms var(--timing-function);
 }
 .services_btn:hover,
 .services_btn:focus {
@@ -545,12 +602,57 @@ address {
   margin-bottom: 30px;
 }
 
+.server_overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-background-animation);
+
+  transform: translateY(100%);
+  transition: transform 250ms var(--timing-function);
+}
+.server_card:hover .server_overlay {
+  transform: translateY(0);
+}
+
+.server_relative_img {
+  position: relative;
+  overflow: hidden;
+}
+
+.server_absolute_text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  padding: 63px 24px;
+}
+
+.server_text {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+  color: var(--color-background-primary);
+}
+
 .card_border {
   background: var(--color-background-primary);
   border: 1px solid var(--color-border-one);
 
   border-top: none;
   padding: 20px 24px;
+}
+.server_card .server_img,
+.server_card .card_border {
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 0px 0px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 250ms var(--timing-function);
 }
 .server_card:hover .server_img,
 .server_card:focus .server_img {
