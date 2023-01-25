@@ -71,7 +71,9 @@
       <section class="contact">
         <div class="container contact_container">
           <h1 class="contact_title">Ефективні рішення для вашого бізнесу</h1>
-          <button class="contact_btn" type="button">Замовити послугу</button>
+          <button data-modal-open class="contact_btn" type="button">
+            Замовити послугу
+          </button>
         </div>
       </section>
       <section class="about section">
@@ -495,6 +497,26 @@
         </div>
       </div>
     </footer>
+
+    <div data-modal class="backdrop is-hidden">
+      <div class="modal">
+        <!-- <p class="modal_text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
+          deleniti, similique omnis culpa voluptas odio deserunt voluptates,
+          illum tempore reprehenderit ipsa dolorum nesciunt fugit quibusdam
+          corrupti, distinctio consequuntur mollitia beatae. Quam perspiciatis
+          incidunt magnam qui praesentium itaque maiores tempora.
+        </p> -->
+        <button data-modal-close class="btn_close_modal">✕</button>
+
+        <!-- <img
+          class="btn_close_modal"
+          src="./image/modal/close.png"
+          alt="modal-close"
+          data-modal-close
+        /> -->
+      </div>
+    </div>
     <script src="./js/modal.js"></script>
   </body>
 </html>
