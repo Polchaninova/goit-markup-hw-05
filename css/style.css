@@ -180,6 +180,7 @@ img {
   letter-spacing: 0.02em;
 
   color: var(--color-text-deck);
+  transition: color 250ms var(--timing-function);
 }
 .header_list_tel {
   margin-left: 30px;
@@ -193,9 +194,13 @@ img {
   letter-spacing: 0.02em;
 
   color: var(--color-text-deck);
-
-  transition: color 250ms var(--timing-function),
-    fill 250ms var(--timing-function);
+  transition: color 250ms var(--timing-function);
+}
+.header_link_tel:hover,
+.header_link_email:hover,
+.header_link_tel:focus,
+.header_link_email:focus {
+  color: var(--background-color-even);
 }
 .header_link_email:hover .email-img,
 .header_link_email:focus .email-img,
@@ -204,12 +209,6 @@ img {
   fill: var(--color-action);
 }
 
-.header_link_tel:hover,
-.header_link_email:hover,
-.header_link_tel:focus,
-.header_link_email:focus {
-  color: var(--background-color-even);
-}
 .contact {
   max-width: 1600px;
   margin: 0 auto;
@@ -436,26 +435,22 @@ img {
 .partner_item {
   width: 170px;
   height: 92px;
-  border: 1px solid var(--color-fill-svg);
-  border-radius: 4px;
-  transition: color 250ms var(--timing-function);
 }
-.partner_item:hover,
-.partner_item:focus {
-  border: 1px solid var(--color-action);
-}
+
 .partner_link {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 4px;
 
-  transition: fill 250ms var(--timing-function);
+  border: 1px solid var(--color-fill-svg);
+  transition: border 250ms var(--timing-function);
 }
-.partner_link:hover .partner_icon,
-.partner_link:focus .partner_icon {
-  fill: var(--color-action);
+.partner_item:hover .partner_link,
+.partner_item:focus .partner_link {
+  border: 1px solid var(--color-action);
 }
 
 .partner_item:not(:last-of-type) {
@@ -466,6 +461,11 @@ img {
   width: 106px;
   height: 60px;
   fill: var(--color-fill-svg);
+  transition: fill 250ms var(--timing-function);
+}
+.partner_link:hover .partner_icon,
+.partner_link:focus .partner_icon {
+  fill: var(--color-action);
 }
 
 .footer {
@@ -551,13 +551,11 @@ address {
 .social_link {
   background-color: rgba(255, 255, 255, 0.1);
   fill: var(--color-invert);
-  transition: background-color 250ms var(--timing-function),
-    fill 250ms var(--timing-function);
+  transition: background-color 250ms var(--timing-function);
 }
 .social_link:hover,
 .social_link:focus {
   background-color: var(--color-action);
-  fill: var(--color-invert);
 }
 /* portfolio css */
 .services_list {
@@ -644,27 +642,32 @@ address {
 }
 
 .card_border {
+  padding: 20px 24px;
+
   background: var(--color-background-primary);
   border: 1px solid var(--color-border-one);
-
   border-top: none;
-  padding: 20px 24px;
 }
-.server_card .server_img,
-.server_card .card_border {
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 0px 0px rgba(0, 0, 0, 0.06);
+.server_card {
   transition: box-shadow 250ms var(--timing-function);
-}
-.server_card:hover .server_img,
-.server_card:focus .server_img {
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-    1px 4px 6px rgba(0, 0, 0, 0.16);
 }
 .server_card:hover .card_border,
 .server_card:focus .card_border {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
+.server_card .server_img,
+.server_card .card_border {
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 0px 0px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 250ms var(--timing-function);
+}
+
+.server_card:hover .server_img,
+.server_card:focus .server_img {
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+    1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+
 /* 
 .server_item:hover,
 .server_item:focus {
@@ -693,8 +696,8 @@ address {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: var(--color-backdrop);
 
   opacity: 1;
@@ -702,6 +705,7 @@ address {
 }
 .backdrop.is-hidden {
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
 }
 
@@ -727,11 +731,12 @@ address {
   position: absolute;
   top: 8px;
   right: 8px;
-
+  padding: 0;
   width: 30px;
   height: 30px;
 
-  border-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   background-color: var(--color-background-primary);
+  font-weight: 600;
 }
