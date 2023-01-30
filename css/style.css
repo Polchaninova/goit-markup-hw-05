@@ -166,6 +166,13 @@ img {
 .email-tel {
   margin-right: 10px;
   fill: var(--color-text-deck);
+  transition: fill 250ms var(--timing-function);
+}
+.email-img:hover,
+.email-img:focus,
+.email-tel:hover,
+.email-tel:focus {
+  fill: var(--color-action);
 }
 
 .header_list_email {
@@ -202,12 +209,12 @@ img {
 .header_link_email:focus {
   color: var(--background-color-even);
 }
-.header_link_email:hover .email-img,
+/* .header_link_email:hover .email-img,
 .header_link_email:focus .email-img,
 .header_link_tel:hover .email-tel,
 .header_link_tel:focus .email-tel {
   fill: var(--color-action);
-}
+} */
 
 .contact {
   max-width: 1600px;
@@ -700,8 +707,8 @@ address {
   height: 100vh;
   background-color: var(--color-backdrop);
 
-  opacity: 1;
-  transition: opacity 250ms var(--timing-function);
+  transition: opacity 250ms var(--timing-function),
+    visibility 250ms var(--timing-function);
 }
 .backdrop.is-hidden {
   opacity: 0;
@@ -710,13 +717,13 @@ address {
 }
 
 .backdrop.is-hidden .modal {
-  transform: translate(-50%, -50%) scale(0.9);
+  transform: scale(0.9) translate(-50%, -50%);
 }
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1);
+  transform: scale(1) translate(-50%, -50%);
   transition: transform 250ms var(--timing-function);
 
   width: 528px;
