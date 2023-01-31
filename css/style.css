@@ -168,10 +168,17 @@ img {
   fill: var(--color-text-deck);
   transition: fill 250ms var(--timing-function);
 }
-.email-img:hover,
+/* .email-img:hover,
 .email-img:focus,
 .email-tel:hover,
 .email-tel:focus {
+  fill: var(--color-action);
+} */
+
+.header_link_email:hover .email-img,
+.header_link_email:focus .email-img,
+.header_link_tel:hover .email-tel,
+.header_link_tel:focus .email-tel {
   fill: var(--color-action);
 }
 
@@ -209,12 +216,6 @@ img {
 .header_link_email:focus {
   color: var(--background-color-even);
 }
-/* .header_link_email:hover .email-img,
-.header_link_email:focus .email-img,
-.header_link_tel:hover .email-tel,
-.header_link_tel:focus .email-tel {
-  fill: var(--color-action);
-} */
 
 .contact {
   max-width: 1600px;
